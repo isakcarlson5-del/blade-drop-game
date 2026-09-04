@@ -22,7 +22,11 @@
         /* FIT scaling inevitably leaves letterbox space on tall phones and
            wide desktops. Treat it as an intentional palette-matched frame
            instead of faking a continuation of the textured canvas. */
-        background: var(--stage-frame, #35170f);
+        background: linear-gradient(
+          180deg,
+          var(--stage-top, #f0863c),
+          var(--stage-bottom, #d84f2b)
+        );
         touch-action: none;
         overscroll-behavior: none;
         -webkit-user-select: none;
@@ -33,14 +37,24 @@
       #game-root {
         position: fixed;
         inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
       #game-root canvas {
         display: block;
         outline: none;
         box-shadow: 0 0 52px rgb(0 0 0 / 28%);
+      }
+      /* On screens taller than the authored 9:16 stage, only horizontal caps
+         are exposed. Match each cap to the nearest canvas edge; the hidden
+         midpoint transition sits behind the canvas and cannot create a seam. */
+      @media (max-aspect-ratio: 9 / 16) {
+        html,
+        body {
+          background: linear-gradient(
+            180deg,
+            var(--stage-top, #f0863c) 0 50%,
+            var(--stage-bottom, #d84f2b) 50% 100%
+          );
+        }
       }
       /* Screen-reader-only helpers for accessibility labels */
       .sr-only {
@@ -55,7 +69,7 @@
         border: 0;
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-DYu_3kYf.js"></script>
+    <script type="module" crossorigin src="./assets/index-BNwmSAKJ.js"></script>
   </head>
   <body>
     <div id="game-root" role="application" aria-label="Blade Drop knife throwing game"></div>
