@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1a1424" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Blade Drop</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* FIT scaling inevitably leaves letterbox space on tall phones and
+           wide desktops. Treat it as an intentional palette-matched frame
+           instead of faking a continuation of the textured canvas. */
+        background: var(--stage-frame, #35170f);
+        touch-action: none;
+        overscroll-behavior: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      }
+      #game-root {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #game-root canvas {
+        display: block;
+        outline: none;
+        box-shadow: 0 0 52px rgb(0 0 0 / 28%);
+      }
+      /* Screen-reader-only helpers for accessibility labels */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-9z4PFvUh.js"></script>
+  </head>
+  <body>
+    <div id="game-root" role="application" aria-label="Blade Drop knife throwing game"></div>
+    <p class="sr-only">
+      Blade Drop. Tap, click, or press Space to throw a knife into the rotating wooden target.
+      Avoid hitting other knives. Slice citrus fruit to earn currency. Use arrows or WASD to
+      navigate, P or Escape to pause, and M to mute.
+    </p>
+  </body>
+</html>
